@@ -10,15 +10,7 @@ export const fetchAllItems=()=>async(dispatch)=>{
     }
 }
 
-export const fetchAllSales=()=>async(dispatch)=>{
-   try{
-     const response=await axios.get("https://3d01f58c-d776-4d4a-89ac-9d9a39afc19a-00-2rbr98vgvfaoi.pike.replit.dev/api/v1/sales");
 
-     dispatch({type:"FETCH_ALL_SALES", payload:response.data})
-   }catch(error){
-    console.error("Error in  fetching sales");
-   }
-}
 
 export const addItem=(newItem)=>async(dispatch)=>{
     try{
@@ -50,3 +42,22 @@ export const deleteItem=(itemId)=>async(dispatch)=>{
     }
 }
 
+export const fetchAllSales=()=>async(dispatch)=>{
+    try{
+      const response=await axios.get("https://3d01f58c-d776-4d4a-89ac-9d9a39afc19a-00-2rbr98vgvfaoi.pike.replit.dev/api/v1/sales");
+ 
+      dispatch({type:"FETCH_ALL_SALES", payload:response.data})
+    }catch(error){
+     console.error("Error in  fetching sales");
+    }
+ }
+
+ export const addSale=(itemId,quantity,price)=>async(dispatch)=>{
+    try{
+       const response=await axios.post(`https://3d01f58c-d776-4d4a-89ac-9d9a39afc19a-00-2rbr98vgvfaoi.pike.replit.dev/api/v1/sales/${itemId}`,{quantity,price});
+
+       dispatch({type:"ADD_SALE", payload:response.data})
+    }catch(error){
+        console.error("Error in add sale");
+    }
+ }
