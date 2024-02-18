@@ -15,8 +15,8 @@ export const NavBar=()=>{
                 <NavLink to="/" style={getStyle}>Reports</NavLink>||
                 <NavLink to="/items" style={getStyle}>Item</NavLink>||
                 <NavLink to="/sales" style={getStyle}>Sale</NavLink>||
-                <NavLink to="/" target="_blank">Git repo</NavLink>||
-                <NavLink to="/" target="_blank">API</NavLink>
+                <NavLink to="https://github.com/bijaylaxmibehera/inventory-management" target="_blank">Git repo</NavLink>||
+                <NavLink to="https://replit.com/@Bijaylaxmi2117/inventory-management?v=1" target="_blank">API</NavLink>
             </nav>
         </div>
         </>
