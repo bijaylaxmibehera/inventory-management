@@ -19,13 +19,20 @@ export const inventoryReducer = (state = initialState, action) => {
       }
     case 'UPDATE_ITEM_TO_BE':
       return { ...state, itemToBeUpdated: action.payload }
-    case 'UPDATE_IEM':
-      return {
-        ...state,
-        items: state.items.map(item =>
-          item._id === action.payload._id ? action.payload : item
-        )
+    case 'UPDATE_ITEM':
+      const updatedItem = action.payload
+      const updatedIndex = state.items.findIndex(
+        item => item._id === updatedItem._id
+      )
+      if (updatedIndex !== -1) {
+        const updatedItems = [...state.items]
+        updatedItems[updatedIndex] = updatedItem
+        return {
+          ...state,
+          items: updatedItems
+        }
       }
+      return state;
     case 'DELETE_ITEM':
       return {
         ...state,
